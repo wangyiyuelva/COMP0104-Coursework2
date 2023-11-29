@@ -14,7 +14,7 @@ def get_impl_filename(test_filename):
     if test_filename.startswith('Test'):
         return test_filename[4:]  # Remove the prefix 'Test' for matching
     if test_filename.endswith('Test.java'):
-        return test_filename.replace('Test.java', '.java')  # Replace 'Test.java' with '.java' for matching
+        return test_filename.replace('Test.java', '.java')  # Replace '*Test.java' with '.java' for matching
     return None
 
 # Function to process the CSV and analyze the data
@@ -64,3 +64,4 @@ before, after, same_commit = analyze_test_file_creation(csv_file_path)
 print(f"Test files created before implementation files: {before}")
 print(f"Test files created after implementation files: {after}")
 print(f"Test files created in the same commit as implementation files: {same_commit}")
+
