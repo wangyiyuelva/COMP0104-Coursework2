@@ -42,9 +42,10 @@ def analyze_test_file_creation(csv_path):
                     file_time_hash[commit_date] = row['hash']
 
     with open('./pydrillerData/commons-geometry_analyze.csv', 'w', newline='') as file:
-        fields = ['type', 'hash_test_creation', 'hash_test_impl']
+        fields = ['type', 'hash_test_creation', 'test_file', 'hash_test_impl', 'impl_file']
         writer = csv.DictWriter(file, fieldnames=fields)
-        writer.writerow({'type': 'type', 'hash_test_creation': 'hash_test_creation', 'hash_test_impl': 'hash_test_impl'})
+        writer.writerow({'type': 'type', 'hash_test_creation': 'hash_test_creation', 'test_file': 'test_file',
+                         'hash_test_impl': 'hash_test_impl', 'impl_file': 'impl_file'})
 
         # Initialize counters for before, after, and same commit
         before_count = after_count = same_commit_count = 0
@@ -59,17 +60,23 @@ def analyze_test_file_creation(csv_path):
                         before_count += 1
                         writer.writerow({'type': 'before',
                                          'hash_test_creation': file_time_hash[commit_date],
-                                         'hash_test_impl': file_time_hash[impl_commit_date]})
+                                         'test_file': filename,
+                                         'hash_test_impl': file_time_hash[impl_commit_date],
+                                         'impl_file': impl_filename})
                     elif commit_date > impl_commit_date:
                         after_count += 1
                         writer.writerow({'type': 'after',
                                          'hash_test_creation': file_time_hash[commit_date],
-                                         'hash_test_impl': file_time_hash[impl_commit_date]})
+                                         'test_file': filename,
+                                         'hash_test_impl': file_time_hash[impl_commit_date],
+                                         'impl_file': impl_filename})
                     else:
                         same_commit_count += 1
                         writer.writerow({'type': 'same',
                                          'hash_test_creation': file_time_hash[commit_date],
-                                         'hash_test_impl': file_time_hash[impl_commit_date]})
+                                         'test_file': filename,
+                                         'hash_test_impl': file_time_hash[impl_commit_date],
+                                         'impl_file': impl_filename})
 
         return before_count, after_count, same_commit_count
 
