@@ -3,7 +3,6 @@ import csv
 from tqdm import tqdm
 import sys
 
-
 project = sys.argv[1]
 print(project)
 csv_path = './pydrillerData/' + project + '.csv'
@@ -19,8 +18,7 @@ with open(csv_path, 'w', newline='', encoding='utf-8') as file:
         modified_file = []
         branches = []
         for file in commit.modified_files:
-            # modified_file.append([file.filename, file.change_type, file.old_path, file.new_path])
-            modified_file.append([file.filename, file.old_path, file.new_path])
+            modified_file.append([file.filename, file.change_type.name, file.old_path, file.new_path])
         for branch in commit.branches:
             branches.append(branch)
         writer.writerow({'hash': commit.hash, 'msg': commit.msg, 'files': commit.files, 'lines': commit.lines,
