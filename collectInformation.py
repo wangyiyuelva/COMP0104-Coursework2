@@ -17,10 +17,10 @@ with open(csv_path, 'w', newline='', encoding='utf-8') as file:
         modified_file = []
         branches = []
         for file in commit.modified_files:
-            # modified_file.append([file.filename, file.change_type, file.old_path, file.new_path])
-            modified_file.append([file.filename, file.old_path, file.new_path])
+            modified_file.append([file.filename, file.change_type.name])
         for branch in commit.branches:
             branches.append(branch)
         writer.writerow({'hash': commit.hash, 'msg': commit.msg, 'files': commit.files, 'lines': commit.lines,
-                         'committer_date': commit.committer_date, 'modified_files': modified_file,
-                         'merge': commit.merge, 'branches': branches})
+                        'committer_date': commit.committer_date, 'modified_files': modified_file,
+                        'merge': commit.merge, 'branches': branches})
+
