@@ -2,6 +2,7 @@ import csv
 import sys
 import ast
 from datetime import datetime
+csv.field_size_limit(sys.maxsize)
 
 # Increase the maximum field size limit
 # csv.field_size_limit(sys.maxsize)
@@ -41,7 +42,7 @@ def analyze_test_file_creation(csv_path):
                     file_creation_times[filename[0]] = commit_date
                     file_time_hash[commit_date] = row['hash']
 
-    with open('./pydrillerData/commons-geometry_analyze.csv', 'w', newline='') as file:
+    with open('./pydrillerData/iceberg_analyze.csv', 'w', newline='') as file:
         fields = ['type', 'hash_test_creation', 'test_file', 'hash_test_impl', 'impl_file']
         writer = csv.DictWriter(file, fieldnames=fields)
         writer.writerow({'type': 'type', 'hash_test_creation': 'hash_test_creation', 'test_file': 'test_file',
@@ -81,7 +82,7 @@ def analyze_test_file_creation(csv_path):
         return before_count, after_count, same_commit_count
 
 # Path to the CSV file - replace with the correct path
-csv_file_path = 'pydrillerData/commons-geometry_without_change_type.csv'
+csv_file_path = 'pydrillerData/iceberg_without_change_type.csv'
 
 # Perform the analysis
 before, after, same_commit = analyze_test_file_creation(csv_file_path)
