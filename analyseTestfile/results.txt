@@ -1,0 +1,44 @@
+commons-geometry
+Test files created before implementation files: 2
+Test files created after implementation files: 20
+Test files created in the same commit as implementation files: 161
+commons-rdf
+Test files created before implementation files: 2
+Test files created after implementation files: 9
+Test files created in the same commit as implementation files: 8
+commons-rng
+Test files created before implementation files: 0
+Test files created after implementation files: 35
+Test files created in the same commit as implementation files: 96
+commons-statistics
+Test files created before implementation files: 0
+Test files created after implementation files: 2
+Test files created in the same commit as implementation files: 70
+iceberg
+Test files created before implementation files: 7
+Test files created after implementation files: 91
+Test files created in the same commit as implementation files: 268
+zeppelin
+Test files created before implementation files: 6
+Test files created after implementation files: 57
+Test files created in the same commit as implementation files: 150
+xalan-java
+Test files created before implementation files: 1
+Test files created after implementation files: 0
+Test files created in the same commit as implementation files: 1
+submarine
+Test files created before implementation files: 2
+Test files created after implementation files: 16
+Test files created in the same commit as implementation files: 64
+storm
+Test files created before implementation files: 27
+Test files created after implementation files: 73
+Test files created in the same commit as implementation files: 142
+reef
+Test files created before implementation files: 17
+Test files created after implementation files: 15
+Test files created in the same commit as implementation files: 109
+plc4x
+Test files created before implementation files: 44
+Test files created after implementation files: 114
+Test files created in the same commit as implementation files: 65

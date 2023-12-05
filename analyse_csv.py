@@ -98,7 +98,7 @@ csv_file = project + '.csv'
 
 # Perform the analysis
 before, after, same_commit = analyze_test_file_creation(csv_file)
-with open('results.txt', 'a') as file:
+with open('./analyseTestfile/results.txt', 'a') as file:
     file.write(project + '\n')
     file.write(f"Test files created before implementation files: {before}\n")
     file.write(f"Test files created after implementation files: {after}\n")
