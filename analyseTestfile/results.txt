@@ -42,3 +42,63 @@ plc4x
 Test files created before implementation files: 44
 Test files created after implementation files: 114
 Test files created in the same commit as implementation files: 65
+pinot
+Test files created before implementation files: 60
+Test files created after implementation files: 286
+Test files created in the same commit as implementation files: 646
+phoenix
+Test files created before implementation files: 10
+Test files created after implementation files: 67
+Test files created in the same commit as implementation files: 143
+parquet-mr
+Test files created before implementation files: 10
+Test files created after implementation files: 38
+Test files created in the same commit as implementation files: 105
+ozone
+Test files created before implementation files: 34
+Test files created after implementation files: 190
+Test files created in the same commit as implementation files: 420
+orc
+Test files created before implementation files: 3
+Test files created after implementation files: 24
+Test files created in the same commit as implementation files: 83
+openmeetings
+Test files created before implementation files: 2
+Test files created after implementation files: 15
+Test files created in the same commit as implementation files: 8
+metamodel
+Test files created before implementation files: 2
+Test files created after implementation files: 24
+Test files created in the same commit as implementation files: 130
+lens
+Test files created before implementation files: 3
+Test files created after implementation files: 30
+Test files created in the same commit as implementation files: 73
+kylin
+Test files created before implementation files: 26
+Test files created after implementation files: 47
+Test files created in the same commit as implementation files: 514
+knox
+Test files created before implementation files: 15
+Test files created after implementation files: 71
+Test files created in the same commit as implementation files: 251
+directory-kerby
+Test files created before implementation files: 2
+Test files created after implementation files: 26
+Test files created in the same commit as implementation files: 42
+db-jdo
+Test files created before implementation files: 1
+Test files created after implementation files: 4
+Test files created in the same commit as implementation files: 61
+iotdb
+Test files created before implementation files: 66
+Test files created after implementation files: 169
+Test files created in the same commit as implementation files: 470
+inlong
+Test files created before implementation files: 27
+Test files created after implementation files: 71
+Test files created in the same commit as implementation files: 283
+ignite
+Test files created before implementation files: 20
+Test files created after implementation files: 72
+Test files created in the same commit as implementation files: 278
