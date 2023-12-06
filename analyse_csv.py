@@ -2,7 +2,6 @@ import csv
 import sys
 import ast
 from datetime import datetime
-import sys
 
 # Increase the maximum field size limit
 # csv.field_size_limit(sys.maxsize)
@@ -21,14 +20,14 @@ def get_impl_filename(test_filename):
     return None
 
 # Function to process the CSV and analyze the data
-def analyze_test_file_creation(csv_path):
+def analyze_test_file_creation(csv_file):
     # Dictionary to store the creation times of files
     file_creation_times = {}
     # Dictionary to store the hash with corresponding creation time
     file_time_hash = {}
 
     # Read the CSV file
-    with open('./pydrillerData/' + csv_path, mode='r', newline='', encoding='utf-8') as file:
+    with open('./pydrillerData/' + csv_file, mode='r', newline='', encoding='utf-8') as file:
         reader = csv.DictReader(file)
         for row in reader:
             # Parse the committer date
@@ -38,17 +37,20 @@ def analyze_test_file_creation(csv_path):
 
             # Record the creation date for all files
             for filename in modified_files:
-                # Assume that the file is new if not present in the dictionary
-                if filename[0] not in file_creation_times:
+                if filename[1] == 'ADD':
                     file_creation_times[filename[0]] = commit_date
                     file_time_hash[commit_date] = row['hash']
+                # # Assume that the file is new if not present in the dictionary
+                # if filename[0] not in file_creation_times:
+                #     file_creation_times[filename[0]] = commit_date
+                #     file_time_hash[commit_date] = row['hash']
 
-    new_file_path = './pydrillerData/analyse_' + csv_path
+    new_file_path = './analyseTestfile/analyse_' + csv_file
     with open(new_file_path, 'w', newline='') as file:
-        fields = ['type', 'hash_test_creation', 'test_file', 'hash_test_impl', 'impl_file']
+        fields = ['type', 'test_file', 'hash_test_creation', 'test_creation_time', 'impl_file', 'hash_impl_creation', 'impl_creation_time']
         writer = csv.DictWriter(file, fieldnames=fields)
-        writer.writerow({'type': 'type', 'hash_test_creation': 'hash_test_creation', 'test_file': 'test_file',
-                         'hash_test_impl': 'hash_test_impl', 'impl_file': 'impl_file'})
+        writer.writerow({'type': 'type', 'test_file': 'test_file', 'hash_test_creation': 'hash_test_creation', 'test_creation_time': 'test_creation_time',
+                         'impl_file': 'impl_file', 'hash_impl_creation': 'hash_impl_creation',  'impl_creation_time': 'impl_creation_time'})
 
         # Initialize counters for before, after, and same commit
         before_count = after_count = same_commit_count = 0
@@ -56,40 +58,47 @@ def analyze_test_file_creation(csv_path):
         # Analyze the creation times by comparing test files with their corresponding implementation files
         for filename, commit_date in file_creation_times.items():
             if is_test_file(filename):
+                test_filename = filename
                 impl_filename = get_impl_filename(filename)
-                if impl_filename and impl_filename in file_creation_times:
+                if test_filename and impl_filename in file_creation_times:
                     impl_commit_date = file_creation_times[impl_filename]
                     if commit_date < impl_commit_date:
                         before_count += 1
                         writer.writerow({'type': 'before',
+                                         'test_file': test_filename,
                                          'hash_test_creation': file_time_hash[commit_date],
-                                         'test_file': filename,
-                                         'hash_test_impl': file_time_hash[impl_commit_date],
-                                         'impl_file': impl_filename})
+                                         'test_creation_time': commit_date,
+                                         'impl_file': impl_filename,
+                                         'hash_impl_creation': file_time_hash[impl_commit_date],
+                                         'impl_creation_time': impl_commit_date})
                     elif commit_date > impl_commit_date:
                         after_count += 1
                         writer.writerow({'type': 'after',
+                                         'test_file': test_filename,
                                          'hash_test_creation': file_time_hash[commit_date],
-                                         'test_file': filename,
-                                         'hash_test_impl': file_time_hash[impl_commit_date],
-                                         'impl_file': impl_filename})
+                                         'test_creation_time': commit_date,
+                                         'impl_file': impl_filename,
+                                         'hash_impl_creation': file_time_hash[impl_commit_date],
+                                         'impl_creation_time': impl_commit_date})
                     else:
                         same_commit_count += 1
                         writer.writerow({'type': 'same',
+                                         'test_file': test_filename,
                                          'hash_test_creation': file_time_hash[commit_date],
-                                         'test_file': filename,
-                                         'hash_test_impl': file_time_hash[impl_commit_date],
-                                         'impl_file': impl_filename})
+                                         'test_creation_time': commit_date,
+                                         'impl_file': impl_filename,
+                                         'hash_impl_creation': file_time_hash[impl_commit_date],
+                                         'impl_creation_time': impl_commit_date})
 
         return before_count, after_count, same_commit_count
 
 project = sys.argv[1]
 # Path to the CSV file - replace with the correct path
-csv_file_path = project + '.csv'
+csv_file = project + '.csv'
 
 # Perform the analysis
-before, after, same_commit = analyze_test_file_creation(csv_file_path)
-with open('results.txt', 'a') as file:
+before, after, same_commit = analyze_test_file_creation(csv_file)
+with open('./analyseTestfile/results.txt', 'a') as file:
     file.write(project + '\n')
     file.write(f"Test files created before implementation files: {before}\n")
     file.write(f"Test files created after implementation files: {after}\n")
