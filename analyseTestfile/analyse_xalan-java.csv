@@ -1,3 +1,0 @@
-type,test_file,hash_test_creation,test_creation_time,impl_file,hash_impl_creation,impl_creation_time
-before,NodeTest.java,02ac9a317b46e6419b8f86462c96dafd7827484f,2001-04-17 18:52:52+00:00,Node.java,da3e0d06b467247643ce04e88d3346739d119f21,2022-09-16 18:23:16+05:30
-same,TestDTM.java,db7cee377835f6b3a5a6ffebeff027aa96e865e3,2001-06-12 19:17:02+00:00,DTM.java,db7cee377835f6b3a5a6ffebeff027aa96e865e3,2001-06-12 19:17:02+00:00
