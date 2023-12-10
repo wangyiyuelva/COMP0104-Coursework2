@@ -37,9 +37,10 @@ def analyze_test_file_creation(csv_file):
 
             # Record the creation date for all files
             for filename in modified_files:
-                if filename[1] == 'ADD':
-                    file_creation_times[filename[0]] = commit_date
-                    file_time_hash[commit_date] = row['hash']
+                if filename[0] not in file_creation_times:
+                    if filename[1] == 'ADD':
+                        file_creation_times[filename[0]] = commit_date
+                        file_time_hash[commit_date] = row['hash']
                 # # Assume that the file is new if not present in the dictionary
                 # if filename[0] not in file_creation_times:
                 #     file_creation_times[filename[0]] = commit_date
