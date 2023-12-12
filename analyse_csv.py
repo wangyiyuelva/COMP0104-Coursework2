@@ -87,7 +87,7 @@ def analyze_test_file_creation(csv_file):
                                          })
                     elif commit_date > impl_commit_date:
                         after_count += 1
-                        writer.writerow({'type': 'before',
+                        writer.writerow({'type': 'after',
                                          'test_file': test_filename,
                                          'hash_test_creation': file_time_hash[commit_date],
                                          'test_creation_time': commit_date,
@@ -101,7 +101,7 @@ def analyze_test_file_creation(csv_file):
                                          })
                     else:
                         same_commit_count += 1
-                        writer.writerow({'type': 'before',
+                        writer.writerow({'type': 'same',
                                          'test_file': test_filename,
                                          'hash_test_creation': file_time_hash[commit_date],
                                          'test_creation_time': commit_date,

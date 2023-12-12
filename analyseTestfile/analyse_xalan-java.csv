@@ -1,3 +1,3 @@
 type,test_file,hash_test_creation,test_creation_time,test_commit_files,test_commit_lines,impl_file,hash_impl_creation,impl_creation_time,impl_commit_files,impl_commit_lines
 before,NodeTest.java,b36a3e21a8137fc6078d71ee11acd287f6a96db6,2000-07-05 14:49:05+00:00,210,23167,Node.java,8e94a6ee38ab30bc09fc4704412c087fc40c3407,2000-10-02 02:43:25+00:00,116,24667
-before,TestDTM.java,db7cee377835f6b3a5a6ffebeff027aa96e865e3,2001-06-12 19:17:02+00:00,312,65232,DTM.java,8369097ef91857586285de157e7d41be72e19f67,2000-06-19 16:53:54+00:00,293,70119
+after,TestDTM.java,db7cee377835f6b3a5a6ffebeff027aa96e865e3,2001-06-12 19:17:02+00:00,312,65232,DTM.java,8369097ef91857586285de157e7d41be72e19f67,2000-06-19 16:53:54+00:00,293,70119
