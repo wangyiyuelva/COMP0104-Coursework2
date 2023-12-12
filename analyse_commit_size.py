@@ -20,8 +20,11 @@ def count_test_files(modified_files_str):
             count += 1
     return count
 
+
+repo_name = 'parquet-mr'
+
 # Load data
-csv_file = './pydrillerData/pinot.csv'  # Replace with your CSV file path
+csv_file = f'./pydrillerData/{repo_name}.csv'  # Replace with your CSV file path
 df = load_data(csv_file)
 
 # Count the number of test files in each commit
@@ -38,7 +41,7 @@ df['commit_size'] = df['files'] + df['lines']
 # Create a new DataFrame with required columns
 result_df = df[['hash', 'commit_size', 'num_test_files']]
 # Save the new DataFrame to a new CSV file
-result_csv_file = './table_commit_size.csv'  # Replace with desired output CSV file path
+result_csv_file = f'./analyseCommitSize/{repo_name}-table_commit_size.csv'  # Replace with desired output CSV file path
 result_df.to_csv(result_csv_file, index=False)
 # Correlation analysis
 correlation, _ = pearsonr(df['commit_size'], df['num_test_files'])
