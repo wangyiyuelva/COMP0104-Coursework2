@@ -122,11 +122,11 @@ csv_file = project + '.csv'
 
 # Perform the analysis
 before, after, same_commit = analyze_test_file_creation(csv_file)
-# with open('./analyseTestfile/results.txt', 'a') as file:
-#     file.write(project + '\n')
-#     file.write(f"Test files created before implementation files: {before}\n")
-#     file.write(f"Test files created after implementation files: {after}\n")
-#     file.write(f"Test files created in the same commit as implementation files: {same_commit}\n")
+with open('./analyseTestfile/results.txt', 'a') as file:
+    file.write(project + '\n')
+    file.write(f"Test files created before implementation files: {before}\n")
+    file.write(f"Test files created after implementation files: {after}\n")
+    file.write(f"Test files created in the same commit as implementation files: {same_commit}\n")
 
 # Output the results
 print(f"Test files created before implementation files: {before}")
