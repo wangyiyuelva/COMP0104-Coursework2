@@ -16,3 +16,6 @@ For example, `python collect_information.py knox`, the generated csv file is in 
 For example, `python analyse_csv.py knox`, the generated csv file is in `analyseTestfile/analyse_project_name.csv`, and the corresponding results are appended to `results.txt`
 
 `run.sh` and `run.bat` are scripts to collect information, analyse and generate results for multiple repositories. Simply change the project name, then the results will output to `results.txt` file.
+
+## Generated Figure
+![avatar](/GeneratedImages/Creation_Time_Ratio_Bar.png)
