@@ -57,7 +57,7 @@ def analyze_same_commit_sizes_standard_deviation(csv_file):
 
     return size_counts
 
-def analyze_same_commit_sizes_percentile(csv_file):
+def analyze_same_commit_sizes(csv_file):
     with open(csv_file, mode='r', newline='', encoding='utf-8') as file:
         reader = csv.DictReader(file)
         commit_data = [row for row in reader if row['type'] == 'same']
@@ -75,17 +75,16 @@ def analyze_same_commit_sizes_percentile(csv_file):
     # Calculate percentiles for commit sizes
     small_threshold = df['commit_size'].quantile(0.25)
     medium_threshold = df['commit_size'].quantile(0.75)
-    large_threshold = df['commit_size'].quantile(0.95)  # 95th percentile for large commits
 
-    # Categorize commit sizes based on quartiles and the 95th percentile
-    bins = [-float('inf'), small_threshold, medium_threshold, large_threshold, float('inf')]
-    labels = ['small', 'medium', 'large', 'very large']
-    size_categories = pd.cut(df['commit_size'], bins=bins, labels=labels)
+    # Categorize commit sizes based on quartiles
+    size_categories = pd.cut(df['commit_size'], 
+                             bins=[-float('inf'), small_threshold, medium_threshold, float('inf')], 
+                             labels=['small', 'medium', 'large'])
 
     # Count the number of commits in each size category
     size_counts = size_categories.value_counts().to_dict()
 
-    # Print statistics
+    # Print descriptive statistics
     print(f"Descriptive Statistics for Commit Sizes:")
     print(f"Mean commit size: {df['commit_size'].mean()}")
     print(f"Standard Deviation of commit size: {df['commit_size'].std()}")
@@ -93,14 +92,12 @@ def analyze_same_commit_sizes_percentile(csv_file):
     print(f"Maximum commit size: {df['commit_size'].max()}")
     print(f"Small threshold (25th percentile): {small_threshold}")
     print(f"Medium threshold (75th percentile): {medium_threshold}")
-    print(f"Large threshold (95th percentile): {large_threshold}")
 
     # Plot histogram
     plt.hist(df['commit_size'], bins=30, alpha=0.5, color='blue', edgecolor='black')
     plt.axvline(df['commit_size'].mean(), color='red', linestyle='dashed', linewidth=2, label='Mean')
     plt.axvline(small_threshold, color='green', linestyle='dashed', linewidth=2, label='Small threshold (25th percentile)')
     plt.axvline(medium_threshold, color='orange', linestyle='dashed', linewidth=2, label='Medium threshold (75th percentile)')
-    plt.axvline(large_threshold, color='purple', linestyle='dashed', linewidth=2, label='Large threshold (95th percentile)')
     plt.title('Histogram of Commit Sizes')
     plt.xlabel('Commit Size')
     plt.ylabel('Frequency')
