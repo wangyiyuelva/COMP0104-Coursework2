@@ -21,7 +21,7 @@ def count_test_files(modified_files_str):
     return count
 
 
-repo_name = 'parquet-mr'
+repo_name = 'Submarine'
 
 # Load data
 csv_file = f'./pydrillerData/{repo_name}.csv'  # Replace with your CSV file path
@@ -50,5 +50,5 @@ print(f'Pearson Correlation: {correlation}')
 plt.scatter(df['commit_size'], df['num_test_files'])
 plt.xlabel('Commit Size')
 plt.ylabel('Number of Test files')
-plt.title('Correlation between Commit Size and Inclusion of Test Files')
+plt.title(f'{repo_name} - Correlation between Commit Size and Inclusion of Test Files')
 plt.show()
