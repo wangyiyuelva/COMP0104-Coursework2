@@ -24,3 +24,4 @@ For example, `python analyse_csv.py knox`, the generated csv file is in `analyse
 ![avatar](/RQ2Diagrams/output1.png)
 ![avatar](/RQ2Diagrams/output2.png)
 ![avatar](/RQ2Diagrams/output3.png)
+![avatar](/RQ2Diagrams/output4.png)
