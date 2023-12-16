@@ -18,4 +18,9 @@ For example, `python analyse_csv.py knox`, the generated csv file is in `analyse
 `run.sh` and `run.bat` are scripts to collect information, analyse and generate results for multiple repositories. Simply change the project name, then the results will output to `results.txt` file.
 
 ## Generated Figure
+- RQ1
 ![avatar](/GeneratedImages/Creation_Time_Ratio_Bar.png)
+- RQ2 (Choosed 3 specific repos for evidence visualization)
+![avatar](/RQ2Diagrams/output1.png)
+![avatar](/RQ2Diagrams/output2.png)
+![avatar](/RQ2Diagrams/output3.png)
