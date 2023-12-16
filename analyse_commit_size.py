@@ -48,7 +48,7 @@ def prepare_csv(csv_file):
     return result_df
 
 
-repo_name = 'ignite'
+repo_name = 'knox'
 
 # Load data
 csv_file = f'./pydrillerData/{repo_name}.csv'  # Replace with your CSV file path
